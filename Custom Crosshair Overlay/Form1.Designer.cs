@@ -34,8 +34,7 @@
             // 
             // crossHairPictureBox
             // 
-            this.crossHairPictureBox.Image = global::Custom_Crosshair_Overlay.Properties.Resources.juuzou;
-            this.crossHairPictureBox.Location = new System.Drawing.Point(12, 22);
+            this.crossHairPictureBox.Location = new System.Drawing.Point(12, 12);
             this.crossHairPictureBox.Name = "crossHairPictureBox";
             this.crossHairPictureBox.Size = new System.Drawing.Size(64, 64);
             this.crossHairPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
