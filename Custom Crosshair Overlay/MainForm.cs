@@ -45,14 +45,14 @@ namespace Custom_Crosshair_Overlay
             // Hotkey Detection Method
             if (m.Msg == WM_HOTKEY && (int)m.WParam == 1)
             {
-                // CTRL+SHIFT+K Hotkey Pressed (Show/Hide Item Overlay)
+                // CTRL+SHIFT+K Hotkey Pressed
                 if (!this.ContainsFocus)
                 {
                     this.Activate();
                 }
                 else
                 {
-                    //SetForegroundWindow(smiteHandle);
+                    
                 }
             }
             else if (m.Msg == WM_HOTKEY && (int)m.WParam == 2)
@@ -130,6 +130,8 @@ namespace Custom_Crosshair_Overlay
 
         private void addCrosshairByURLButton_Click(object sender, EventArgs e)
         {
+            browseFileButton.Enabled = false;
+
             addCrosshairByURLButton.Enabled = false;
             useLocalImageButton.Enabled = true;
 
@@ -139,6 +141,8 @@ namespace Custom_Crosshair_Overlay
 
         private void useLocalImageButton_Click(object sender, EventArgs e)
         {
+            browseFileButton.Enabled = true;
+
             useLocalImageButton.Enabled = false;
             addCrosshairByURLButton.Enabled = true;
 
@@ -166,7 +170,10 @@ namespace Custom_Crosshair_Overlay
             while (!processToOverlay.HasExited)
             {
                 GetWindowRect(windowToOverlay, out window);
-                f1.Location = new Point((window.Right/2) - (f1.crossHairPictureBox.Size.Width/2), (window.Bottom/2) - (f1.crossHairPictureBox.Size.Height/2));
+                f1.Location = new Point(
+                    ((window.Right/2) - (f1.crossHairPictureBox.Size.Width/2) + Decimal.ToInt32(adjustXspinner.Value))
+                    , ((window.Bottom/2) - (f1.crossHairPictureBox.Size.Height/2) + Decimal.ToInt32(adjustYspinner.Value))
+                    );
 
                 if (GetForegroundWindow() != windowToOverlay && !this.ContainsFocus)
                 {
@@ -176,7 +183,7 @@ namespace Custom_Crosshair_Overlay
                 {
                     f1.crossHairPictureBox.Visible = true;
                 }
-                await Task.Delay(500);
+                await Task.Delay(1);
             }
         }
 
@@ -202,7 +209,9 @@ namespace Custom_Crosshair_Overlay
         {
             f1.Size = new System.Drawing.Size(Decimal.ToInt32(crosshairSizeSpinner.Value), Decimal.ToInt32(crosshairSizeSpinner.Value));
             f1.crossHairPictureBox.Size = new System.Drawing.Size(Decimal.ToInt32(crosshairSizeSpinner.Value), Decimal.ToInt32(crosshairSizeSpinner.Value));
-            f1.Location = new Point(960 - f1.Size.Width, 540 - f1.Size.Height);
+            f1.Location = new Point((window.Right / 2) - (f1.crossHairPictureBox.Size.Width / 2), (window.Bottom / 2) - (f1.crossHairPictureBox.Size.Height / 2));
+
+            //f1.Location = new Point(Decimal.ToInt32(adjustXspinner.Value), Decimal.ToInt32(adjustYspinner.Value));
         }
 
         private void adjustXspinner_ValueChanged(object sender, EventArgs e)
@@ -222,9 +231,16 @@ namespace Custom_Crosshair_Overlay
 
         private void processesWithWindowComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            processToOverlay = processesWithWindow[processesWithWindowComboBox.SelectedIndex];
-            windowToOverlay = processesWithWindow[processesWithWindowComboBox.SelectedIndex].MainWindowHandle;
-            Console.WriteLine("Window to overlay set to {0} and process to {1}", windowToOverlay, processToOverlay);
+            try
+            {
+                processToOverlay = processesWithWindow[processesWithWindowComboBox.SelectedIndex];
+                windowToOverlay = processesWithWindow[processesWithWindowComboBox.SelectedIndex].MainWindowHandle;
+                Console.WriteLine("Window to overlay set to {0} and process to {1}", windowToOverlay, processToOverlay);
+            }
+            catch
+            {
+                // Catch process created while combo box open
+            }
         }
 
         #region Invoke DLLs
@@ -266,5 +282,16 @@ namespace Custom_Crosshair_Overlay
             public int Bottom;      // y position of lower-right corner
         }
         #endregion
+
+        private void browseFileButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            System.Windows.Forms.DialogResult dr = ofd.ShowDialog();
+
+            if(dr == DialogResult.OK)
+            {
+                crosshairFileLocationTextBox.Text = ofd.FileName;
+            }
+        }
     }
 }

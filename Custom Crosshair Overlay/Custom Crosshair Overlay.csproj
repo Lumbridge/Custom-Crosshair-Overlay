@@ -37,28 +37,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="SharpDX">
-      <HintPath>..\..\Guild Wars 2 TP Item Buyer\Guild Wars 2 TP Item Buyer\bin\StoreApp\SharpDX.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.D3DCompiler">
-      <HintPath>..\..\Guild Wars 2 TP Item Buyer\Guild Wars 2 TP Item Buyer\bin\StoreApp\SharpDX.D3DCompiler.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\SharpDX\SharpDX.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.Direct2D1">
-      <HintPath>..\..\Guild Wars 2 TP Item Buyer\Guild Wars 2 TP Item Buyer\bin\StoreApp\SharpDX.Direct2D1.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\SharpDX\SharpDX.Direct2D1.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.DXGI">
-      <HintPath>..\..\Guild Wars 2 TP Item Buyer\Guild Wars 2 TP Item Buyer\bin\StoreApp\SharpDX.DXGI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\SharpDX\SharpDX.DXGI.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.Mathematics">
-      <HintPath>..\..\Guild Wars 2 TP Item Buyer\Guild Wars 2 TP Item Buyer\bin\StoreApp\SharpDX.Mathematics.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.MediaFoundation">
-      <HintPath>..\..\Guild Wars 2 TP Item Buyer\Guild Wars 2 TP Item Buyer\bin\StoreApp\SharpDX.MediaFoundation.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.XAudio2">
-      <HintPath>..\..\Guild Wars 2 TP Item Buyer\Guild Wars 2 TP Item Buyer\bin\StoreApp\SharpDX.XAudio2.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.XInput">
-      <HintPath>..\..\Guild Wars 2 TP Item Buyer\Guild Wars 2 TP Item Buyer\bin\StoreApp\SharpDX.XInput.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\SharpDX\SharpDX.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -118,6 +106,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

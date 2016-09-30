@@ -43,6 +43,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.adjustXspinner = new System.Windows.Forms.NumericUpDown();
             this.adjustYspinner = new System.Windows.Forms.NumericUpDown();
+            this.browseLocalImageDialog = new System.Windows.Forms.OpenFileDialog();
+            this.browseFileButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.crosshairSizeSpinner)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.adjustXspinner)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.adjustYspinner)).BeginInit();
@@ -119,7 +121,7 @@
             this.crosshairFileLocationTextBox.Enabled = false;
             this.crosshairFileLocationTextBox.Location = new System.Drawing.Point(133, 84);
             this.crosshairFileLocationTextBox.Name = "crosshairFileLocationTextBox";
-            this.crosshairFileLocationTextBox.Size = new System.Drawing.Size(233, 20);
+            this.crosshairFileLocationTextBox.Size = new System.Drawing.Size(163, 20);
             this.crosshairFileLocationTextBox.TabIndex = 7;
             // 
             // activateButton
@@ -186,53 +188,59 @@
             // 
             this.adjustXspinner.Location = new System.Drawing.Point(133, 247);
             this.adjustXspinner.Maximum = new decimal(new int[] {
-            1920,
+            960,
             0,
             0,
             0});
             this.adjustXspinner.Minimum = new decimal(new int[] {
-            1920,
+            960,
             0,
             0,
             -2147483648});
             this.adjustXspinner.Name = "adjustXspinner";
             this.adjustXspinner.Size = new System.Drawing.Size(233, 20);
             this.adjustXspinner.TabIndex = 13;
-            this.adjustXspinner.Value = new decimal(new int[] {
-            960,
-            0,
-            0,
-            0});
             this.adjustXspinner.ValueChanged += new System.EventHandler(this.adjustXspinner_ValueChanged);
             // 
             // adjustYspinner
             // 
             this.adjustYspinner.Location = new System.Drawing.Point(133, 273);
             this.adjustYspinner.Maximum = new decimal(new int[] {
-            1080,
+            540,
             0,
             0,
             0});
             this.adjustYspinner.Minimum = new decimal(new int[] {
-            1080,
+            540,
             0,
             0,
             -2147483648});
             this.adjustYspinner.Name = "adjustYspinner";
             this.adjustYspinner.Size = new System.Drawing.Size(233, 20);
             this.adjustYspinner.TabIndex = 14;
-            this.adjustYspinner.Value = new decimal(new int[] {
-            540,
-            0,
-            0,
-            0});
             this.adjustYspinner.ValueChanged += new System.EventHandler(this.adjustYspinner_ValueChanged);
+            // 
+            // browseLocalImageDialog
+            // 
+            this.browseLocalImageDialog.FileName = "openFileDialog1";
+            // 
+            // browseFileButton
+            // 
+            this.browseFileButton.Enabled = false;
+            this.browseFileButton.Location = new System.Drawing.Point(302, 82);
+            this.browseFileButton.Name = "browseFileButton";
+            this.browseFileButton.Size = new System.Drawing.Size(63, 23);
+            this.browseFileButton.TabIndex = 15;
+            this.browseFileButton.Text = "Browse";
+            this.browseFileButton.UseVisualStyleBackColor = true;
+            this.browseFileButton.Click += new System.EventHandler(this.browseFileButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(392, 309);
+            this.Controls.Add(this.browseFileButton);
             this.Controls.Add(this.adjustYspinner);
             this.Controls.Add(this.adjustXspinner);
             this.Controls.Add(this.label6);
@@ -279,5 +287,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown adjustXspinner;
         private System.Windows.Forms.NumericUpDown adjustYspinner;
+        private System.Windows.Forms.OpenFileDialog browseLocalImageDialog;
+        private System.Windows.Forms.Button browseFileButton;
     }
 }
